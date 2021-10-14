@@ -11,3 +11,6 @@ Dataset: https://drive.google.com/drive/folders/1r8mHXQoz9JF5aqHBF2HnYfu2SzJzqEp
 * Đánh giá mô hình.
 * Xây dựng Restful API phân loại.
 * Xây dựng website/ứng dụng trên di động.
+
+# Cài đặt
+* Các thư viện cần thiết: `pip install -r setup.txt`

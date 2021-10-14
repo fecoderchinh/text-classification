@@ -1,0 +1,5 @@
+pyvi
+tqdm
+numpy
+gensim
+joblib
