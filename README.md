@@ -3,21 +3,25 @@ Classifying text content
 
 # Resources
 Dataset: <br> 
-https://drive.google.com/drive/folders/1r8mHXQoz9JF5aqHBF2HnYfu2SzJzqEpn?usp=sharing <br>
+[Google search results](https://www.google.com/search?q=A+Large-scale+Vietnamese+News+Text+Classification+Corpus&ei=T_3DYtH2NPKU3LUPk6qC4As&ved=0ahUKEwiR2u__sOH4AhVyCrcAHROVALwQ4dUDCA4&uact=5&oq=A+Large-scale+Vietnamese+News+Text+Classification+Corpus&gs_lcp=Cgdnd3Mtd2l6EANKBAhBGABKBAhGGABQAFgAYNAFaABwAXgAgAGCAogBggKSAQMyLTGYAQCgAQKgAQHAAQE&sclient=gws-wiz) <br>
 Word vectors:<br> 
 https://github.com/Kyubyong/wordvectors
 
 # Tasks
-* Làm sạch dữ liệu, tách từ, chuẩn hóa từ, loại bỏ stopword.
-* Phân loại dữ liệu văn bản.
-* Xây dựng mô hình (sử dụng ít nhất 3 giải thuật)
-* Đánh giá mô hình.
-* Xây dựng Restful API phân loại.
-* Xây dựng website/ứng dụng trên di động.
+* Cleaning the text, splitting it into words and handling punctuation and case.
+* Categorizing text data.
+* Building the models.
+* Model evaluation.
+* Building RESTful API
+* Building web/app layout.
 
 # Work flow
-* Các thư viện cần thiết: `pip install -r setup.txt`
-* Tải các resources cần thiết và lưu vào thư mục project
-* Chạy `python build.py` hoặc `build.py` để build data
-* Chạy `python train.py` hoặc `train.py` để kiểm tra quá trình huấn luyện các mô hình
-* Chạy `python predict.py` hoặc `predict.py` để tiến hành dự đoán kết quả phân loại văn bản.
+* Install the packages: `pip install -r setup.txt`
+* Download the dataset and extract into `./data`
+---
+* Run `python build.py` or `build.py` to build data
+---
+* Run `python train.py` or `train.py` for full training data
+---
+* Run `python predict.py` or `predict.py` to predict the result
+    <br>_You can also change the algorithm in this._
