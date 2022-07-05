@@ -1,18 +1,30 @@
 def test_str():
-    # expected ['Suc khoe']
+    # expected ['Doi song']
     test_doc = '''
-        Từ khoảng 20.000 ca nhiễm một ngày vào tháng 8, số ca ở Nhật Bản đột ngột giảm thẳng đứng cho đến giữa tháng 10, trở thành câu chuyện về thành công chống dịch có phần bí ẩn.
+        Cô gái 28 tuổi xoay ngang xoay dọc để tìm đường sống. Trong một lần trò chuyện với nhóm xuất khẩu nông sản quen biết từ thời kinh doanh thực phẩm sạch, Hồng nhận được một gợi ý sản xuất và cung cấp mỳ, trong đó có mỳ làm từ ngô để xuất đi các nước châu Âu. Nhu cầu tích trữ đồ khô trong bối cảnh dịch bệnh khiến thị trường bún, mỳ xuất khẩu phát triển mạnh.
 
-        Ca mắc mới tại Nhật hiện giảm mạnh so với mức đỉnh vào giữa tháng 8. Khi ấy, Tokyo ghi nhận tới 6.000 người mắc Covid-19 một ngày. Đến ngày 17/10, thủ đô chỉ báo cáo 40 trường hợp dương tính, thấp nhất trong năm, đánh dấu ngày thứ 9 liên tiếp có dưới 100 ca mới và là mức thấp nhất trong 11 tháng qua.
+        Ngô là thứ lương thực nuôi sống người Nùng ở Hữu Lũng và đưa ba chị em Hồng đến giảng đường đại học. Trong miền ký ức gian khổ mà êm đềm nhất luôn có bóng dáng những bữa cơm độn, cháo ngô, bánh chông chênh hay bỏng ngô.
         
-        Người dân trở lại cuộc sống bình thường. Các quán bar chật cứng, tàu điện ngầm lại đông đúc, công chúng xuống đường với tâm trạng hân hoan, dù không ai biết chính xác vì sao dịch bệnh tại Nhật Bản đột ngột suy yếu.
+        "Nghe đến từ mỳ ngô, trong tôi như có một tiếng gọi xa xưa vọng lại. Tôi từng mơ ước làm ra một sản phẩm có 'mã vạch' quê hương và tự hỏi liệu đây có phải cơ hội cho mình không", Hồng kể.
         
-        Khác với các nước châu Âu và châu Á, Nhật chưa từng thực hiện phong tỏa, chỉ ban bố tình trạng khẩn cấp ở các vùng trọng điểm. Tuy nhiên, giới chuyên gia phỏng đoán một số yếu tố dẫn đến thành công chống dịch: chiến dịch tiêm chủng khởi động muộn màng nhưng triển khai nhanh chóng; người dân không lui tới các quán bar do dịch lan rộng; thói quen đeo khẩu trang từ trước đại dịch và thời tiết xấu vào tháng 8 khiến mọi người tự động ở nhà.
+        Tại châu Âu, dòng mỳ pasta làm từ ngô canh tác tự nhiên là sản phẩm cao cấp, một phần vì trong ngô không có gluten - một chất mà những người theo trường phái ăn uống lành mạnh (healthy) cố tránh. Càng nghiên cứu, Minh Hồng càng thấy mỳ ngô có tương lai. Sau hai tuần lên kế hoạch, cô để chồng con ở lại thành phố, về quê cách đó 100 cây số.
         
-        Nhiều người cho rằng chiến dịch tiêm chủng hiệu quả, đặc biệt là ở người trẻ tuổi, đã khiến số ca nhiễm giảm xuống. Đến nay, gần 70% người dân Nhật Bản đã được tiêm phòng đầy đủ chống Covid-19.
+        Minh Hồng cùng em gái liên hệ nhập khẩu dây chuyền máy móc từ nước ngoài, xây nhà xưởng, lên kế hoạch trồng ngô cũng như hoàn thiện các thủ tục pháp lý... Trong vụ ngô hè thu năm ngoái, cô kêu gọi họ hàng trồng giống ngô bản địa, không biến đổi gene và sử dụng phân trâu, bò, dê thay thế cho phân bón hóa học và không dùng thuốc diệt cỏ. Riêng gia đình Hồng tập trung xây dựng nhà xưởng sản xuất.
         
-        Kazuhiro Tateda, giáo sư virus học tại Đại học Toho, cho biết: "Việc tiêm phòng nhanh chóng và mạnh mẽ ở người dưới 64 tuổi khiến nước này tạm thời đạt ngưỡng gần với miễn dịch cộng đồng".
+        Mỳ, miến vốn là món ăn quen thuộc của người Việt. Gia đình Hồng cũng từng làm bún gạo để ăn. Ban đầu cô cứ nghĩ làm mỳ ngô cũng tương tự nhưng khi bắt tay vào thực tế thì khác hoàn toàn.
         
-        Tateda lưu ý tỷ lệ tiêm chủng đã tăng từ tháng 7 đến tháng 9, trong khi biến thể Delta lan nhanh. Song dựa trên kinh nghiệm về lây nhiễm nCoV đột phá của các nước đi trước là Anh và Mỹ, ông cho rằng chỉ vaccine là không đủ. Hiệu quả của các liều tiêm sẽ suy yếu theo thời gian.
+        Mẻ đầu tiên, ngô không ra sợi, chỗ sống chỗ chín. Bản chất ngô không kết dính được như gạo, cứ bở bùng bục. Hồng nghĩ vấn đề tại bột sống nên mẻ sau cần phải làm sao cho chín. Cô chỉnh lại máy, làm lại bột, lần này thành phẩm là những cục cứng ngoắc. Nhìn 40 kg ngô cho ra thành phẩm không khác gì đá tảng, ông Hoàng Văn Hoa, bố Hồng thở dài: "Ném trâu còn chết".
+        
+        Cứ thế cải tiến dần dần, từ cục to ra cục bé hơn, rồi ra sợi đứt gãy. Bao ngày đêm cả nhà dồn tâm sức vào, cuốn sổ của Hồng ghi chi chít từng mẻ mà không có dấu hiệu khả quan.
+        
+        Giữa lúc đó, những tai nạn không ngừng ập đến. Trong một lần ông Hoa đang hàn lại máy ép sợi thì bị vập mu bàn tay vào thanh sắt, máu túa ra. Mấy mẹ con hốt hoảng đưa bố đi cấp cứu.
+        
+        Minh Hồng vẫn phải vừa lo cho bố, vừa lo mẻ bột còn dang dở. Cô nhờ người em chồng có kinh nghiệm cơ khí đến sửa. Vẫn chiếc máy đó và mối hàn đó, người em bị bập ngón chân vào. Lần này máu đổ nhiều hơn. "Những ngày đó tôi không thể ngủ được. Tôi lo quá tam ba bận, nhỡ có chuyện gì xảy ra nguy hiểm hơn nữa", cô bộc bạch.
+        
+        Hồng quyết định múc bỏ bột, dừng sản xuất vài tuần để người thân tĩnh dưỡng và cũng để cho bản thân cơ hội trấn an. Khi bố khỏe, cô thuê thêm vài thợ về cùng vận hành lại xưởng. Việc này tưởng đã êm thấm, không ngờ chừng một tháng sau khi đang thao tác máy bón mì tự động, ông Hoa bị tay cầm máy đập vào mắt trái, khiến mắt sưng vù, nước mắt chảy ra liên tục. Lần này ông nằm viện mất cả tháng.
+        
+        "Tôi thực sự nản. Tôi dằn vặt bởi suy nghĩ vì mình mà người thân cũng lâm vào con đường khó khăn", Hồng bộc bạch.
+        
+        Nhớ lại thời điểm đó, ông Hoa cũng nhận ra tâm trạng của con gái cả. Sau tai nạn này Hồng bảo bố mẹ dừng một thời gian hãy làm, ông Hoa động viên con: "Cố làm nốt đợt này rồi đợi mẻ ngô mới".
     '''
     return test_doc

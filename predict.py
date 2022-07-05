@@ -20,10 +20,12 @@ def preprocessing_doc(doc):
 
     return lines
 
-import pickle
+import sys
+import joblib
+sys.modules['sklearn.externals.joblib'] = joblib
 
-X_data = pickle.load(open('data/X_data.pkl', 'rb'))
-y_data = pickle.load(open('data/y_data.pkl', 'rb'))
+X_data = joblib.load(open('data/X_data.pkl', 'rb'))
+y_data = joblib.load(open('data/y_data.pkl', 'rb'))
 
 # X_test = pickle.load(open('data/X_test.pkl', 'rb'))
 # y_test = pickle.load(open('data/y_test.pkl', 'rb'))
@@ -44,8 +46,6 @@ encoder = preprocessing.LabelEncoder()
 y_data_n = encoder.fit_transform(y_data)
 
 from sklearn.model_selection import train_test_split
-
-
 def train_model(classifier, X_data, y_data, X_test=None, y_test=None, is_neuralnet=False, n_epochs=3):
     X_train, X_val, y_train, y_val = train_test_split(X_data, y_data, test_size=0.1, random_state=42)
 

@@ -12,6 +12,7 @@ sys.modules['sklearn.externals.joblib'] = joblib
 dir_path = os.path.dirname(os.path.realpath(os.getcwd()))
 dir_path = os.path.join(dir_path, 'text-classification/data')
 
+
 def get_data(folder_path):
     X = []
     y = []

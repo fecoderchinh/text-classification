@@ -1,4 +1,5 @@
 # Các gói thư viện phục vụ tiền xử lý dữ liệu
+from keras.layers import Bidirectional
 from sklearn import model_selection, preprocessing, linear_model, naive_bayes, metrics, svm
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn import decomposition, ensemble
@@ -24,6 +25,7 @@ sys.modules['sklearn.externals.joblib'] = joblib
 dir_path = os.path.dirname(os.path.realpath(os.getcwd()))
 dir_path = os.path.join(dir_path, 'text-classification/data')
 
+
 def get_data(folder_path):
     X = []
     y = []
@@ -37,13 +39,14 @@ def get_data(folder_path):
                 lines = gensim.utils.simple_preprocess(lines)
                 lines = ' '.join(lines)
                 lines = ViTokenizer.tokenize(lines)
-#                 sentence = ' '.join(words)
-#                 print(lines)
+                #                 sentence = ' '.join(words)
+                #                 print(lines)
                 X.append(lines)
                 y.append(path)
-#             break
-#         break
+    #             break
+    #         break
     return X, y
+
 
 if not os.path.exists(os.path.join(dir_path, 'X_data.pkl')) and not os.path.exists(
         os.path.join(dir_path, 'y_data.pkl')):
@@ -76,6 +79,7 @@ else:
 # Count Vectors as features
 
 # create a count vectorizer object
+print('start creating a count vectorizer object')
 count_vector = CountVectorizer(analyzer='word', token_pattern=r'\w{1,}')
 count_vector.fit(X_data)
 
@@ -85,39 +89,45 @@ X_test_count = count_vector.transform(X_test)
 
 # TF-IDF Vectors
 
+print('start TfidfVectorizer')
 # word level - we choose max number of words equal to 30000 except all words (100k+ words)
 tfidf_vect = TfidfVectorizer(analyzer='word', max_features=30000)
-tfidf_vect.fit(X_data) # learn vocabulary and idf from training set
-X_data_tfidf =  tfidf_vect.transform(X_data)
+tfidf_vect.fit(X_data)  # learn vocabulary and idf from training set
+X_data_tfidf = tfidf_vect.transform(X_data)
 # assume that we don't have test set before
-X_test_tfidf =  tfidf_vect.transform(X_test)
+X_test_tfidf = tfidf_vect.transform(X_test)
 
-tfidf_vect.get_feature_names()
+tfidf_vect.get_feature_names_out()
 
+print('start TfidfVectorizer ngram level')
 # ngram level - we choose max number of words equal to 30000 except all words (100k+ words)
 tfidf_vect_ngram = TfidfVectorizer(analyzer='word', max_features=30000, ngram_range=(2, 3))
 tfidf_vect_ngram.fit(X_data)
-X_data_tfidf_ngram =  tfidf_vect_ngram.transform(X_data)
+X_data_tfidf_ngram = tfidf_vect_ngram.transform(X_data)
 # assume that we don't have test set before
-X_test_tfidf_ngram =  tfidf_vect_ngram.transform(X_test)
+X_test_tfidf_ngram = tfidf_vect_ngram.transform(X_test)
 
-tfidf_vect_ngram.get_feature_names()
+tfidf_vect_ngram.get_feature_names_out()
 
+print('start TfidfVectorizer ngram-char level')
 # ngram-char level - we choose max number of words equal to 30000 except all words (100k+ words)
 tfidf_vect_ngram_char = TfidfVectorizer(analyzer='char', max_features=30000, ngram_range=(2, 3))
 tfidf_vect_ngram_char.fit(X_data)
-X_data_tfidf_ngram_char =  tfidf_vect_ngram_char.transform(X_data)
+X_data_tfidf_ngram_char = tfidf_vect_ngram_char.transform(X_data)
 # assume that we don't have test set before
-X_test_tfidf_ngram_char =  tfidf_vect_ngram_char.transform(X_test)
+X_test_tfidf_ngram_char = tfidf_vect_ngram_char.transform(X_test)
 
 # Transform by SVD to decrease number of dimensions
 # Word Level
 from sklearn.decomposition import TruncatedSVD
+
+print('start TruncatedSVD')
 svd = TruncatedSVD(n_components=300, random_state=42)
 svd.fit(X_data_tfidf)
 X_data_tfidf_svd = svd.transform(X_data_tfidf)
 X_test_tfidf_svd = svd.transform(X_test_tfidf)
 
+print('start TruncatedSVD ngram Level')
 # ngram Level
 svd_ngram = TruncatedSVD(n_components=300, random_state=42)
 svd_ngram.fit(X_data_tfidf_ngram)
@@ -126,6 +136,7 @@ X_data_tfidf_ngram_svd = svd_ngram.transform(X_data_tfidf_ngram)
 X_test_tfidf_ngram_svd = svd_ngram.transform(X_test_tfidf_ngram)
 
 # ngram Char Level
+print('start TruncatedSVD ngram Char Level')
 svd_ngram_char = TruncatedSVD(n_components=300, random_state=42)
 svd_ngram_char.fit(X_data_tfidf_ngram_char)
 X_data_tfidf_ngram_char_svd = svd_ngram_char.transform(X_data_tfidf_ngram_char)
@@ -133,6 +144,8 @@ X_test_tfidf_ngram_char_svd = svd_ngram_char.transform(X_test_tfidf_ngram_char)
 
 # Word Embeddings
 from gensim.models import KeyedVectors
+
+print('start KeyedVectors')
 dir_path = os.path.dirname(os.path.realpath(os.getcwd()))
 word2vec_model_path = os.path.join(dir_path, "text-classification/data/vi/vi.vec")
 
@@ -140,29 +153,33 @@ w2v = KeyedVectors.load_word2vec_format(word2vec_model_path)
 vocab = w2v.index_to_key
 wv = w2v
 
+
 def get_word2vec_data(X):
     word2vec_data = []
     for x in X:
         sentence = []
         for word in x.split(" "):
             if word in vocab:
-#                 print(word)
+                #                 print(word)
                 sentence.append(wv[word])
 
         word2vec_data.append(sentence)
-#         break
+    #         break
     return word2vec_data
+
 
 X_data_w2v = get_word2vec_data(X_data)
 X_test_w2v = get_word2vec_data(X_test)
 
+print('start LabelEncoder')
 encoder = preprocessing.LabelEncoder()
 y_data_n = encoder.fit_transform(y_data)
 y_test_n = encoder.fit_transform(y_test)
 
-encoder.classes_ # kết quả: array(['Chinh tri Xa hoi', 'Doi song', 'Khoa hoc', 'Kinh doanh',
-                 #                 'Phap luat', 'Suc khoe', 'The gioi', 'The thao', 'Van hoa',
-                 #                 'Vi tinh'], dtype='<U16')
+encoder.classes_  # kết quả: array(['Chinh tri Xa hoi', 'Doi song', 'Khoa hoc', 'Kinh doanh',
+#                 'Phap luat', 'Suc khoe', 'The gioi', 'The thao', 'Van hoa',
+#                 'Vi tinh'], dtype='<U16')
+
 
 from sklearn.model_selection import train_test_split
 
@@ -187,33 +204,42 @@ def train_model(classifier, X_data, y_data, X_test, y_test, is_neuralnet=False, 
     print("Validation accuracy: ", metrics.accuracy_score(val_predictions, y_val))
     print("Test accuracy: ", metrics.accuracy_score(test_predictions, y_test))
 
+
+print('start train_model MultinomialNB')
 train_model(naive_bayes.MultinomialNB(), X_data_tfidf, y_data, X_test_tfidf, y_test, is_neuralnet=False)
 
 # train_model(naive_bayes.MultinomialNB(), X_data_tfidf_ngram_svd, y_data, X_test_tfidf_ngram_svd, y_test, is_neuralnet=False)
 
 # train_model(naive_bayes.MultinomialNB(), X_data_tfidf_ngram_char_svd, y_data, X_test_tfidf_ngram_char_svd, y_test, is_neuralnet=False)
 
+print('start train_model BernoulliNB')
 train_model(naive_bayes.BernoulliNB(), X_data_tfidf, y_data, X_test_tfidf, y_test, is_neuralnet=False)
 
+print('start train_model BernoulliNB svd')
 train_model(naive_bayes.BernoulliNB(), X_data_tfidf_svd, y_data, X_test_tfidf_svd, y_test, is_neuralnet=False)
 
 # Linear Classifier
+print('start train_model LogisticRegression')
 train_model(linear_model.LogisticRegression(), X_data_tfidf, y_data, X_test_tfidf, y_test, is_neuralnet=False)
+print('start train_model LogisticRegression svd')
 train_model(linear_model.LogisticRegression(), X_data_tfidf_svd, y_data, X_test_tfidf_svd, y_test, is_neuralnet=False)
 
 # SVM Model
+print('start train_model SVM')
 train_model(svm.SVC(), X_data_tfidf_svd, y_data, X_test_tfidf_svd, y_test, is_neuralnet=False)
 
 # Bagging Model
+print('start train_model RandomForestClassifier')
 train_model(ensemble.RandomForestClassifier(), X_data_tfidf_svd, y_data, X_test_tfidf_svd, y_test, is_neuralnet=False)
 
 # Boosting Model
+print('start train_model XGBClassifier')
 train_model(xgboost.XGBClassifier(), X_data_tfidf_svd, y_data, X_test_tfidf_svd, y_test, is_neuralnet=False)
 
 # Deep Neural Network
-from tensorflow.keras import optimizers
-from tensorflow.keras.layers import *
-from tensorflow.keras import models
+from tensorflow.python.keras import optimizers
+from tensorflow.python.keras.layers import *
+from tensorflow.python.keras import models
 
 
 def create_dnn_model():
@@ -228,8 +254,12 @@ def create_dnn_model():
 
     return classifier
 
+
+print('start classifing dnn')
 classifier = create_dnn_model()
-train_model(classifier=classifier, X_data=X_data_tfidf_svd, y_data=y_data_n, X_test=X_test_tfidf_svd, y_test=y_test_n, is_neuralnet=True)
+train_model(classifier=classifier, X_data=X_data_tfidf_svd, y_data=y_data_n, X_test=X_test_tfidf_svd, y_test=y_test_n,
+            is_neuralnet=True)
+
 
 # Recurrent Neural Network
 
@@ -250,8 +280,11 @@ def create_lstm_model():
 
     return classifier
 
+
+print('start classifing lstm')
 classifier = create_lstm_model()
-train_model(classifier=classifier, X_data=X_data_tfidf_svd, y_data=y_data_n, X_test=X_test_tfidf_svd, y_test=y_test_n, is_neuralnet=True)
+train_model(classifier=classifier, X_data=X_data_tfidf_svd, y_data=y_data_n, X_test=X_test_tfidf_svd, y_test=y_test_n,
+            is_neuralnet=True)
 
 
 def create_gru_model():
@@ -271,8 +304,11 @@ def create_gru_model():
 
     return classifier
 
+
+print('start classifing gru')
 classifier = create_gru_model()
-train_model(classifier=classifier, X_data=X_data_tfidf_svd, y_data=y_data_n, X_test=X_test_tfidf_svd, y_test=y_test_n, is_neuralnet=True, n_epochs=10)
+train_model(classifier=classifier, X_data=X_data_tfidf_svd, y_data=y_data_n, X_test=X_test_tfidf_svd, y_test=y_test_n,
+            is_neuralnet=True, n_epochs=10)
 
 
 def create_brnn_model():
@@ -292,8 +328,11 @@ def create_brnn_model():
 
     return classifier
 
+
+print('start classifing brnn')
 classifier = create_brnn_model()
-train_model(classifier=classifier, X_data=X_data_tfidf_svd, y_data=y_data_n, X_test=X_test_tfidf_svd, y_test=y_test_n, is_neuralnet=True, n_epochs=20)
+train_model(classifier=classifier, X_data=X_data_tfidf_svd, y_data=y_data_n, X_test=X_test_tfidf_svd, y_test=y_test_n,
+            is_neuralnet=True, n_epochs=20)
 
 
 def create_rcnn_model():
@@ -315,8 +354,11 @@ def create_rcnn_model():
 
     return classifier
 
+
+print('start classifing rcnn')
 classifier = create_rcnn_model()
-train_model(classifier=classifier, X_data=X_data_tfidf_svd, y_data=y_data_n, X_test=X_test_tfidf_svd, y_test=y_test_n, is_neuralnet=True, n_epochs=20)
+train_model(classifier=classifier, X_data=X_data_tfidf_svd, y_data=y_data_n, X_test=X_test_tfidf_svd, y_test=y_test_n,
+            is_neuralnet=True, n_epochs=20)
 
 
 def get_corpus(documents):
@@ -332,6 +374,7 @@ def get_corpus(documents):
 
     return corpus
 
+print('start trainning corpus')
 train_corpus = get_corpus(X_data)
 
 test_corpus = get_corpus(X_test)

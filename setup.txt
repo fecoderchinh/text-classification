@@ -6,3 +6,6 @@ joblib
 pandas
 sklearn
 keras
+xgboost
+textblob
+tensorflow
