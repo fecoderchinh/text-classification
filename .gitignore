@@ -1,6 +1,8 @@
 /data
 /venv
 /.idea
+X_data.pkl
+y_data.pkl
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

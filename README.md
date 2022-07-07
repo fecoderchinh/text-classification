@@ -1,5 +1,5 @@
 # Text Classification
-Classifying text content
+Classifying text content for Vietnamese
 
 # Resources
 Dataset: <br> 

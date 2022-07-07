@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Text Classification - Results</title>
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', path='/img/checked.jpg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+        <div class="contact container">
+                <div class="form">
+                    <div class="form-txt">
+                        <h3>Content</h3>
+                        <p style="max-height: 200px; overflow-y: scroll; border:1px solid grey;">{{ text }}</p>
+                        <h3>Accuracy</h3>
+                        <p>{{ validation_accuracy }}</p>
+                        <h3>Prediction</h3>
+                        <p>{{ model_prediction }}</p>
+                    </div>
+                    <form action="/predict" method="POST">
+                        <div class="form-details">
+                            <h2 style="margin: 0 15px;">Enter another text to check:</h2>
+                            <textarea name="text" cols="52" rows="20" placeholder="Enter another content here"></textarea>
+                            <button>TRY ANOTHER?</button>
+                        </div>
+                    </form>
+                </div>
+
+        </div>
+
+</body>
+</html>

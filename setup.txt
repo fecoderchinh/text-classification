@@ -1,4 +1,4 @@
-pyvi==0.0.7.5
+pyvi==0.1.1
 tqdm==4.64.0
 numpy==1.23.0
 gensim==4.2.0
@@ -10,7 +10,11 @@ keras==2.9.0
 xgboost==1.6.1
 textblob==0.17.1
 tensorflow==2.9.1
+torch==1.12.0
 fastapi==0.78.0
 uvicorn==0.18.2
 image==1.5.33
 tensorflow-cpu==2.9.1
+Jinja2==3.1.2
+python-multipart==0.0.5
+starlette==0.19.1
