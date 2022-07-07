@@ -14,7 +14,7 @@ COPY ./static/* ./tr9h_ml_classification/static
 COPY . .
 
 # Install application dependencies from the requirements file
-RUN pip install -r setup.txt
+RUN pip install -r requirements.txt
 
 EXPOSE 3000
 
