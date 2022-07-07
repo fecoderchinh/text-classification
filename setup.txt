@@ -1,7 +1,15 @@
 pyvi==0.1.1
+tqdm==4.64.0
+numpy==1.23.0
 gensim==4.2.0
 joblib==1.1.0
+pandas==1.4.3
+sklearn==0.0
 scikit-learn==1.1.1
+keras==2.9.0
+xgboost==1.6.1
+textblob==0.17.1
+torch==1.12.0
 fastapi==0.78.0
 uvicorn==0.18.2
 image==1.5.33
