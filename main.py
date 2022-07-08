@@ -6,7 +6,6 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from sklearn import naive_bayes, metrics
-from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
 import gensim
 from pyvi import ViTokenizer
@@ -48,8 +47,6 @@ y_data = joblib.load(open('y_data_compressed.pkl', 'rb'))
 tfidf_vect = TfidfVectorizer(analyzer='word', max_features=30000)
 tfidf_vect.fit(X_data)  # learn vocabulary and idf from training set
 X_data_tfidf = tfidf_vect.transform(X_data)
-svd = TruncatedSVD(n_components=300, random_state=42)
-svd.fit(X_data_tfidf)
 model = naive_bayes.MultinomialNB()
 
 
