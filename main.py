@@ -41,8 +41,8 @@ templates = Jinja2Templates(directory="templates")
 # Uncomment these 2 lines if testing on locally
 # X_data = joblib.load(open('data/X_data.pkl', 'rb'))
 # y_data = joblib.load(open('data/y_data.pkl', 'rb'))
-X_data = joblib.load(open('X_data.pkl', 'rb'))
-y_data = joblib.load(open('y_data.pkl', 'rb'))
+X_data = joblib.load(open('X_data_compressed.pkl', 'rb'))
+y_data = joblib.load(open('y_data_compressed.pkl', 'rb'))
 
 # word level - we choose max number of words equal to 30000 except all words (100k+ words)
 tfidf_vect = TfidfVectorizer(analyzer='word', max_features=30000)

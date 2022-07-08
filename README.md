@@ -20,6 +20,7 @@ https://github.com/Kyubyong/wordvectors
 * Download the dataset and extract into `./data`
 ---
 * Run `python build.py` or `build.py` to build data
+* You can also run `python build-compressed.py` to compress your data
 ---
 * Run `python train.py` or `train.py` for full training data
 ---
