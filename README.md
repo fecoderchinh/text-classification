@@ -8,12 +8,15 @@ Word vectors:<br>
 https://github.com/Kyubyong/wordvectors
 
 # Tasks
+```
 * Cleaning the text, splitting it into words and handling punctuation and case.
 * Categorizing text data.
 * Building the models.
 * Model evaluation.
 * Building RESTful API
 * Building web/app layout.
+```
+Check out [this link](https://tr9hml1.herokuapp.com/) for RESTfull API.
 
 # Work flow
 * Install the packages: `pip install -r setup.txt`
